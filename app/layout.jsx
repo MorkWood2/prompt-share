@@ -1,4 +1,6 @@
 import '@styles/global.css';
+import Nav from '@components/Nav';
+import Provider from '@components/provider';
 
 export const metaData = {
   title: 'prompt-share',
@@ -13,7 +15,10 @@ const RootLayout = ({ children }) => {
           <div className='gradient' />
         </div>
 
-        <main className='app'>{children}</main>
+        <main className='app'>
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );
