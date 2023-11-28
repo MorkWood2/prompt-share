@@ -6,6 +6,17 @@ import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
+  const isUserLoggedIn = true;
+  const [providers, setProviders] = useState(null);
+  useEffect(() => {
+    const setProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    };
+
+    setProviders();
+  }, []);
+
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
       {' '}
@@ -19,7 +30,45 @@ const Nav = () => {
         />
         <p className='logo_text'>Prompt Share</p>
       </Link>
-      {/* */}
+      {/* Desktop Nav */}
+      <div className='sm:flex hidden'>
+        {isUserLoggedIn ? (
+          <div className='flex gap-3 md:gap-5'>
+            logged in{' '}
+            <Link href='/create-prompt' className='black_btn'>
+              Create Post
+            </Link>{' '}
+            <button type='button' onClick={signOut} className='outline_btn'>
+              Sign Out
+            </button>
+            <Link href='/profile'>
+              <Image
+                src='/assets/images/logo.svg'
+                width={37}
+                height={37}
+                className='rounded-full'
+                alt='profile'
+              />
+            </Link>
+          </div>
+        ) : (
+          <div>
+            {' '}
+            {providers &&
+              Object.values(providers).map((providers) => (
+                <button
+                  type='button'
+                  key={providers.name}
+                  onClick={() => signIn(provider.id)}
+                  className='black_btn'
+                >
+                  Sign In
+                </button>
+              ))}{' '}
+          </div>
+        )}
+      </div>
+      {/* Mobile Navigation*/}
     </nav>
   );
 };
