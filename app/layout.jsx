@@ -1,6 +1,6 @@
 import '@styles/global.css';
 import Nav from '@components/Nav';
-import Provider from '@components/provider';
+import Provider from '@components/Provider';
 
 export const metaData = {
   title: 'prompt-share',
