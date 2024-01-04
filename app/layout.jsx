@@ -9,6 +9,9 @@ export const metaData = {
 const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
+      <head>
+        <link rel='shortcut icon' href='#'></link>
+      </head>
       <body>
         <Provider>
           <div className='main'>
