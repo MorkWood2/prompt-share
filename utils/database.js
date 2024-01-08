@@ -13,8 +13,9 @@ export const connectToDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'share_prompt',
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useNewUrlParser: false, // false useNewUrlParser as it is deprecated
+      useUnifiedTopology: false, // false useUnifiedTopology as it is deprecated
+      serverSelectionTimeoutMS: 5000, // Add serverSelectionTimeoutMS to avoid the timeout issue
     });
 
     isConnected = true;
