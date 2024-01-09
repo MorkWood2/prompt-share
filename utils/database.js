@@ -15,7 +15,7 @@ export const connectToDB = async () => {
       dbName: 'share_prompt',
       useNewUrlParser: false, // false useNewUrlParser as it is deprecated
       useUnifiedTopology: false, // false useUnifiedTopology as it is deprecated
-      serverSelectionTimeoutMS: 5000, // Add serverSelectionTimeoutMS to avoid the timeout issue
+      // serverSelectionTimeoutMS: 5000, // Add serverSelectionTimeoutMS to avoid the timeout issue
     });
 
     isConnected = true;
